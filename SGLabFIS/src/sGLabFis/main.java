@@ -52,7 +52,8 @@ public class main {
 		System.out.println();
 		dg.asignarComputador(so3, "GAMMA_5");
 		dg.verificarDisponibilidad(4);
-		
+		dg.quitarComputador("GAMMA_5");
+		dg.verificarDisponibilidad(4);
 			}
 
 }

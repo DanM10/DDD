@@ -15,7 +15,7 @@ public class Credencial {
 
 	@Override
 	public String toString() {
-		return "Credencial [usuario=" + usuario + ", anydeskID=" + anydeskID + ", clave=" + clave + "]";
+		return usuario+"\t"+anydeskID+"           \t"+clave;
 	}
 	
 	

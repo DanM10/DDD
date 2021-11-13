@@ -46,7 +46,7 @@ public class Estudiante {
 
 	@Override
 	public String toString() {
-		return "Estudiante [Nombre=" + Nombre + "]";
+		return Codigo;
 	}
 	
 	

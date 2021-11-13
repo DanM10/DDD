@@ -30,6 +30,23 @@ public class Administrador {
 		}
 	}
 	
+	public void quitarComputador(String codigoMaquina) {
+		boolean seEncontro=false;
+		for (Laboratorio auxlab : listLabs) {
+			for (Computadora auxComputador : auxlab.getListComputadoras()) {
+				if(auxComputador.getCodigo().equals(codigoMaquina)) {
+					auxComputador.setEstaOcupada(false);
+					seEncontro=true;
+					auxComputador.setEstudiante(null);
+				}
+			}
+		}
+		if(!seEncontro) {
+			System.out.println("Código de Computador Incorrecto");
+		}
+		
+	}
+	
 	
 	public List<Computadora> verificarDisponibilidad(int Ram) {
 		List<Computadora> disponibles = new ArrayList<Computadora>();
@@ -45,6 +62,7 @@ public class Administrador {
 			System.out.println("No existen maquinas disponibles");			
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
+			System.out.println("Código\t\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContraseña\tEstudiante");
 			System.out.println(disponibles);
 		}
 		return disponibles;
