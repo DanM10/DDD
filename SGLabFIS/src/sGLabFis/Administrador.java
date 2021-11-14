@@ -9,7 +9,6 @@ public class Administrador {
 	private List<Solicitud> listaSolic;
 	
 	public Administrador(List<Laboratorio> listLabs, List<Solicitud> listaSolic) {
-		super();
 		this.listLabs = listLabs;
 		this.listaSolic = listaSolic;
 	}
@@ -67,6 +66,12 @@ public class Administrador {
 		}
 		return disponibles;
 	}
+
+	public List<Solicitud> getListaSolic() {
+		return listaSolic;
+	}
+	
+	
 	
 
 }

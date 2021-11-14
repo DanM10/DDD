@@ -8,13 +8,16 @@ public class main {
 
 	public main() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenido al Sistema de gestion de entrega de computadores del laboratorio de la FIS\n");
-		menu();
+		Administrador dg = generarAdmin();
+		menu(dg);
 	}
-	private static void menu() {
+	
+	private static Administrador generarAdmin() {
 		List<Laboratorio> ListLab = new ArrayList<Laboratorio>();
 		ListLab.add(new Laboratorio("GAMMA"));
 		ListLab.add(new Laboratorio("BETA"));
@@ -23,14 +26,14 @@ public class main {
 
 		for(int i =0;i<5;i++) {
 			String aux1 = "GAMMA_"+i;
-			String aux2 = "BETTA_"+i;
+			String aux2 = "BETA_"+i;
 			ListLab.get(0).getListComputadoras().add(new Computadora(aux1,8,aux));
 			ListLab.get(1).getListComputadoras().add(new Computadora(aux2,8,aux));
 		}
 
 		for(int i =5;i<10;i++) {
 			String aux1 = "GAMMA_"+i;
-			String aux2 = "BETTA_"+i;
+			String aux2 = "BETA_"+i;
 			ListLab.get(0).getListComputadoras().add(new Computadora(aux1,16,aux));
 			ListLab.get(1).getListComputadoras().add(new Computadora(aux2,20,aux));
 		}
@@ -51,6 +54,13 @@ public class main {
 
 
 		Administrador dg = new Administrador(ListLab,ListSol);
+		return dg;
+	}
+	
+	
+	
+	private static void menu(Administrador dg) {
+		
 
 		Scanner keyboard = new Scanner(System.in);
 		Scanner keyboard2 = new Scanner(System.in);
@@ -76,26 +86,26 @@ public class main {
 					dg.verificarDisponibilidad(16);
 				}else {
 					System.out.println("Seleccione una opcion valida");
-					menu();
+					menu(dg);
 				}
 
 				System.out.println("Ingrese el codigo de la solicitud: so1, so2 o so3");
-				String code = keyboard3.next();
+				String code = keyboard3.nextLine();
 				System.out.println("Elija el computador a asignar\n" +
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el numero de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
 				if(code.equals("so1")) {
-					dg.asignarComputador(so1, computadorAsignado);
+					dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
 					dg.verificarDisponibilidad(4);
 				}else if(code.equals("so2")){
-					dg.asignarComputador(so2, computadorAsignado);
+					dg.asignarComputador(dg.getListaSolic().get(1), computadorAsignado);
 					dg.verificarDisponibilidad(4);
 				}else if(code.equals("so3")){
-					dg.asignarComputador(so3, computadorAsignado);
+					dg.asignarComputador(dg.getListaSolic().get(2), computadorAsignado);
 					dg.verificarDisponibilidad(4);
 				}
-				menu();
+				menu(dg);
 				break;
 			case 2: //Quitar computador
 				System.out.println("Elija el computador a quitar\n" +
@@ -103,15 +113,15 @@ public class main {
 						"Ejemplo: GAMMA_5");
 				String computadorQuitado = keyboard4.nextLine();
 				dg.quitarComputador(computadorQuitado);
-				menu();
+				menu(dg);
 				break;
 			case 3: // Mostrar computadores
 				dg.verificarDisponibilidad(4);
-				menu();
+				menu(dg);
 				break;
 			default:
 				System.out.println("Seleccione una opcion valida");
-				menu();
+				menu(dg);
 				break;
 		}
 
