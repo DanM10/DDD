@@ -2,6 +2,7 @@ package sGLabFis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class main {
 
@@ -10,6 +11,7 @@ public class main {
 	}
 
 	public static void main(String[] args) {
+
 		List<Laboratorio> ListLab = new ArrayList<Laboratorio>();
 		ListLab.add(new Laboratorio("GAMMA"));
 		ListLab.add(new Laboratorio("BETA"));
@@ -46,14 +48,64 @@ public class main {
 		
 		
 		Administrador dg = new Administrador(ListLab,ListSol);
-		
-		
-		dg.verificarDisponibilidad(4);
+
+
+		Scanner keyboard = new Scanner(System.in);
+		Scanner keyboard2 = new Scanner(System.in);
+		Scanner keyboard3 = new Scanner(System.in);
+		Scanner keyboard4 = new Scanner(System.in);
+
+		System.out.println("Bienvenido al Sistema de gestión de entrega de computadores del laboratorio de la FIS\n"
+				+"Ingrese la RAM del computador: 1. 4, 2. 8, 3. 12, 4. 16");
+		int option = keyboard.nextInt();
+
+		//Asignar la cantidad de RAM necesaria
+		switch (option){
+			case 1:
+				dg.verificarDisponibilidad(4);
+				break;
+			case 2:
+				dg.verificarDisponibilidad(8);
+				break;
+			case 3:
+				dg.verificarDisponibilidad(12);
+				break;
+			case 4:
+				dg.verificarDisponibilidad(16);
+				break;
+			default:
+				System.out.println("Seleccione una opción válida");
+				break;
+		}
+
 		System.out.println();
-		dg.asignarComputador(so3, "GAMMA_5");
-		dg.verificarDisponibilidad(4);
-		dg.quitarComputador("GAMMA_5");
-		dg.verificarDisponibilidad(4);
-			}
+
+		System.out.println("Seleccione que desea hacer: 1. Asignar computador, 2. Quitar computador");
+		int option2 = keyboard2.nextInt();
+
+		switch (option2){
+			case 1:
+				System.out.println("Ingrese el código de la solicitud:");
+				//Solicitud code = keyboard3.next();
+				System.out.println("Elija el computador a asignar\n" +
+						"Recuerde que debe escribir el nombre del laboratorio seguido por el número de computador\n" +
+						"Ejemplo: GAMMA_5");
+				String computadorAsignado = keyboard4.nextLine();
+				//dg.asignarComputador(code, computadorAsignado);
+				break;
+			case 2:
+				System.out.println("Elija el computador a quitar\n" +
+						"Recuerde que debe escribir el nombre del laboratorio seguido por el número de computador\n" +
+						"Ejemplo: GAMMA_5");
+				String computadorQuitado = keyboard4.nextLine();
+				dg.quitarComputador(computadorQuitado);
+				break;
+			default:
+				System.out.println("Seleccione una opción válida");
+				break;
+		}
+
+
+	}
 
 }
