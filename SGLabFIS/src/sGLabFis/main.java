@@ -86,12 +86,18 @@ public class main {
 		switch (option2){
 			case 1:
 				System.out.println("Ingrese el código de la solicitud:");
-				//Solicitud code = keyboard3.next();
+				String code = keyboard3.next();
 				System.out.println("Elija el computador a asignar\n" +
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el número de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
-				//dg.asignarComputador(code, computadorAsignado);
+				if(code.equals("so1")) {
+					dg.asignarComputador(so1, computadorAsignado);
+				}else if(code.equals("so2")){
+					dg.asignarComputador(so2, computadorAsignado);
+				}else if(code.equals("so3")){
+					dg.asignarComputador(so3, computadorAsignado);
+				}
 				break;
 			case 2:
 				System.out.println("Elija el computador a quitar\n" +
