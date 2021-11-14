@@ -41,7 +41,7 @@ public class Administrador {
 			}
 		}
 		if(!seEncontro) {
-			System.out.println("Código de Computador Incorrecto");
+			System.out.println("Cï¿½digo de Computador Incorrecto");
 		}
 		
 	}
@@ -61,7 +61,7 @@ public class Administrador {
 			System.out.println("No existen maquinas disponibles");			
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
-			System.out.println("Código\t\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContraseña\tEstudiante");
+			System.out.println("Cï¿½digo\t\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContraseï¿½a\tEstudiante");
 			System.out.println(disponibles);
 		}
 		return disponibles;
@@ -70,8 +70,20 @@ public class Administrador {
 	public List<Solicitud> getListaSolic() {
 		return listaSolic;
 	}
-	
-	
-	
+
+	public boolean estaDisponible(String codigoMaquina) {
+		boolean disponible= false;
+		for (Laboratorio auxlab : listLabs) {
+			for (Computadora auxComputador : auxlab.getListComputadoras()) {
+				if(auxComputador.getCodigo().equals(codigoMaquina)) {
+					disponible=false;
+					break;
+				}else {
+					disponible = true;
+				}
+			}
+		}
+		return disponible;
+	}
 
 }

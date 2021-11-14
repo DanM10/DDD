@@ -95,15 +95,22 @@ public class main {
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el numero de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
-				if(code.equals("so1")) {
-					dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
-					dg.verificarDisponibilidad(4);
-				}else if(code.equals("so2")){
-					dg.asignarComputador(dg.getListaSolic().get(1), computadorAsignado);
-					dg.verificarDisponibilidad(4);
-				}else if(code.equals("so3")){
-					dg.asignarComputador(dg.getListaSolic().get(2), computadorAsignado);
-					dg.verificarDisponibilidad(4);
+				if(dg.estaDisponible(computadorAsignado)== false) {
+					if(code.equals("so1")) {
+						dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
+						dg.verificarDisponibilidad(4);
+					}else if(code.equals("so2")){
+						dg.asignarComputador(dg.getListaSolic().get(1), computadorAsignado);
+						dg.verificarDisponibilidad(4);
+					}else if(code.equals("so3")){
+						dg.asignarComputador(dg.getListaSolic().get(2), computadorAsignado);
+						dg.verificarDisponibilidad(4);
+					}else {
+						System.out.println("Elija una opcion valida");
+						menu(dg);
+					}
+				}else {
+					System.out.println("El computador esta asignado, operacion incompleta");
 				}
 				menu(dg);
 				break;
