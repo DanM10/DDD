@@ -52,7 +52,7 @@ public class Administrador {
 		List<Computadora> disponibles = new ArrayList<Computadora>();
 		for(Laboratorio labAux :listLabs) {
 			for(Computadora cpuAux: labAux.getListComputadoras()) {
-				if(cpuAux.getRAM() >= Ram && java.util.Objects.isNull(cpuAux.getEstudiante())) {
+				if(cpuAux.getRAM() >= Ram && cpuAux.isEstaOcupada() == false) {
 					disponibles.add(cpuAux);
 				}
 			}

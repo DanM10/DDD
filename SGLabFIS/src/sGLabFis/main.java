@@ -37,9 +37,11 @@ public class main {
 			ListLab.get(0).getListComputadoras().add(new Computadora(aux1,16,aux));
 			ListLab.get(1).getListComputadoras().add(new Computadora(aux2,20,aux));
 		}
-			ListLab.get(0).getListComputadoras().get(6).setEstudiante(new Estudiante("00","Juan Pere","sda"));
+			//ListLab.get(0).getListComputadoras().get(6).setEstudiante(new Estudiante("00","Juan Pere","sda"));
+			
 		List<Solicitud> ListSol = new ArrayList<Solicitud>();
 		Administrador dg = new Administrador(ListLab,ListSol);
+		dg.asignarComputador(new Solicitud(new Estudiante("00","Juan Pere","sda"),8,"Red"),"GAMMA_6");
 		return dg;
 	}
 
