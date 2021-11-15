@@ -56,18 +56,19 @@ public class main {
 		Administrador dg = new Administrador(ListLab,ListSol);
 		return dg;
 	}
-	
-	
-	
+
+
+
 	private static void menu(Administrador dg) {
-		
+
 
 		Scanner keyboard = new Scanner(System.in);
 		Scanner keyboard2 = new Scanner(System.in);
 		Scanner keyboard3 = new Scanner(System.in);
 		Scanner keyboard4 = new Scanner(System.in);
 
-		System.out.println("Seleccione que desea hacer:\n1. Asignar computador,\n2. Quitar computador,\n3. Mostrar computadores");
+		System.out.println("Seleccione que desea hacer:\n1. Asignar computador,\n2. Quitar computador,\n3. Mostrar computadores,"
+				+ "\n4. Salir");
 
 		int option = keyboard.nextInt();
 
@@ -79,7 +80,7 @@ public class main {
 				int option2 = keyboard2.nextInt();
 				if(option2 == 1) { //RAM de 4GB
 					dg.verificarDisponibilidad(4);
-				}else if(option2 == 2) {//RAM de 8GB
+				}else if(option2 == 2) { //RAM de 8GB
 					dg.verificarDisponibilidad(8);
 				}else if(option2 == 3) { //RAM de 12GB
 					dg.verificarDisponibilidad(12);
@@ -89,7 +90,6 @@ public class main {
 					System.out.println("Seleccione una opcion valida");
 					menu(dg);
 				}
-
 				//Escoger Solicitud
 				System.out.println("Ingrese el codigo de la solicitud: so1, so2 o so3");
 				String code = keyboard3.nextLine();
@@ -111,7 +111,7 @@ public class main {
 						System.out.println("Elija una opcion valida");
 						menu(dg);
 					}
-				}else { //
+				}else { // Mensaje de que el computador esta ocupado
 					System.out.println("El computador esta asignado, operacion incompleta");
 				}
 				menu(dg);
@@ -122,11 +122,15 @@ public class main {
 						"Ejemplo: GAMMA_5");
 				String computadorQuitado = keyboard4.nextLine();
 				dg.quitarComputador(computadorQuitado);
+				System.out.println("Computador retirado con exito");
 				menu(dg);
 				break;
 			case 3: // Mostrar computadores
 				dg.verificarDisponibilidad(4);
 				menu(dg);
+				break;
+			case 4: //Salir del sistema
+				System.exit(0);
 				break;
 			default: //Mensaje de error
 				System.out.println("Seleccione una opcion valida");
