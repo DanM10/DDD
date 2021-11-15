@@ -76,10 +76,10 @@ public class Administrador {
 		for (Laboratorio auxlab : listLabs) {
 			for (Computadora auxComputador : auxlab.getListComputadoras()) {
 				if(auxComputador.getCodigo().equals(codigoMaquina)) {
-					disponible=false;
-					break;
-				}else {
-					disponible = true;
+					if(!auxComputador.isEstaOcupada()) {
+				        disponible=true;
+				        break;
+					}
 				}
 			}
 		}
