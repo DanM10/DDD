@@ -39,7 +39,7 @@ public class main {
 		}
 
 		List<Solicitud> ListSol = new ArrayList<Solicitud>();
-
+/*
 		Estudiante ej1 = new Estudiante("01","Daniel Garrido","dani@dfa");
 		Estudiante ej2 = new Estudiante("02","Daniela","dani2@dfa");
 		Estudiante ej3 = new Estudiante("03","Daniel C","dani3@dfa");
@@ -51,7 +51,7 @@ public class main {
 		ListSol.add(so1);
 		ListSol.add(so2);
 		ListSol.add(so3);
-
+*/
 
 		Administrador dg = new Administrador(ListLab,ListSol);
 		return dg;
@@ -76,43 +76,57 @@ public class main {
 		switch (option){
 			case 1: //Asignar computador
 				//Ingresar RAM del computador
+				List<Computadora> disponibles = new ArrayList<Computadora>();
 				System.out.println("Ingrese la RAM del computador: 1. 4GB, 2. 8GB, 3. 12GB, 4. 16GB");
 				int option2 = keyboard2.nextInt();
 				if(option2 == 1) { //RAM de 4GB
-					dg.verificarDisponibilidad(4);
+					disponibles = dg.verificarDisponibilidad(4);
 				}else if(option2 == 2) { //RAM de 8GB
-					dg.verificarDisponibilidad(8);
+					disponibles = dg.verificarDisponibilidad(8);
 				}else if(option2 == 3) { //RAM de 12GB
-					dg.verificarDisponibilidad(12);
+					disponibles= dg.verificarDisponibilidad(12);
 				}else if(option2 == 4) { //RAM de 16GB
-					dg.verificarDisponibilidad(16);
+					disponibles= dg.verificarDisponibilidad(16);
 				}else { //Mensaje de error
 					System.out.println("Seleccione una opcion valida");
 					menu(dg);
 				}
-				//Escoger Solicitud
-				System.out.println("Ingrese el codigo de la solicitud: so1, so2 o so3");
-				String code = keyboard3.nextLine();
+				
+				//Elegir Maquina
 				System.out.println("Elija el computador a asignar\n" +
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el numero de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
-				if(dg.estaDisponible(computadorAsignado)== false) { //Busca que el computador no este ocupado
-					if(code.equals("so1")) { //Solicitud 1
-						dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
-						dg.verificarDisponibilidad(4);
-					}else if(code.equals("so2")){ //Solicitud 2
-						dg.asignarComputador(dg.getListaSolic().get(1), computadorAsignado);
-						dg.verificarDisponibilidad(4);
-					}else if(code.equals("so3")){ //Solicitud 3
-						dg.asignarComputador(dg.getListaSolic().get(2), computadorAsignado);
-						dg.verificarDisponibilidad(4);
-					}else { //Mensaje si no se escogio una solicitud valida
-						System.out.println("Elija una opcion valida");
-						menu(dg);
+				boolean encontrado = false;
+				for(Computadora aux:disponibles){
+					if(aux.getCodigo().equals(computadorAsignado)) {
+						//Estudiante
+						System.out.print("Ingrese codigo de estudiante:");
+						String codigo = keyboard.next();
+						System.out.print("Ingrese Nombre del Estudiante: ");
+						String nombre = keyboard2.next();
+						System.out.print("Ingrese correo del estudiante: ");
+						String correo = keyboard3.next();
+						Estudiante auxE = new Estudiante(codigo,nombre,correo);
+						
+						//Solicitud
+						System.out.print("Ingrese materia: ");
+						String materia = keyboard.next();
+						Solicitud auxS = new Solicitud(auxE,option2,materia);
+						dg.getListaSolic().add(auxS);
+						//asignar
+						System.out.println("Estas son las credenciales: ");
+						dg.asignarComputador(auxS, computadorAsignado);
+						dg.verificarDisponibilidad(option2);
+						System.out.println();
+						encontrado=true;
+						break;
+						//
 					}
-				}else { // Mensaje de que el computador esta ocupado
-					System.out.println("El computador esta asignado, operacion incompleta");
+				}
+				
+				if(!encontrado) {
+					System.out.println("No existe esa maquina en la lista de disponibles");
 				}
 				menu(dg);
 				break;

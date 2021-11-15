@@ -61,7 +61,7 @@ public class Administrador {
 			System.out.println("No existen maquinas disponibles");			
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
-			System.out.println("C�digo\t\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a\tEstudiante");
+			System.out.println("C�digo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a "+"Estudiante");
 			System.out.println(disponibles);
 		}
 		return disponibles;

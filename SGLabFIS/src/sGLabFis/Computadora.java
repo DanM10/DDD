@@ -72,7 +72,7 @@ public class Computadora {
 
 	@Override
 	public String toString() {
-		return Codigo+"\t"+RAM+"   \t"+EstaOcupada+"      \t"+credencial.toString()+"\t       "+estudiante+"\n";
+		return Codigo+"\t"+RAM+"   \t"+EstaOcupada+"      \t"+credencial.toString()+"\t      "+estudiante+"\n";
 	}
 	
 	
