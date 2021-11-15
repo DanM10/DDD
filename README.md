@@ -1,5 +1,6 @@
 # DDD
-ProyectoModelamiento
+
+
 Equipo 7
 Proyecto Metodologias Agiles Este repositorio es para los miembros del grupo 7.
 
