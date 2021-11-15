@@ -75,9 +75,8 @@ public class Administrador {
 		boolean disponible= false;
 		for (Laboratorio auxlab : listLabs) {
 			for (Computadora auxComputador : auxlab.getListComputadoras()) {
-				if(auxComputador.getCodigo().equals(codigoMaquina) && auxComputador.isEstaOcupada()==true) {
-					disponible=false;
-					break;
+				if(auxComputador.getCodigo().equals(codigoMaquina) && auxComputador.getEstudiante()==null) {
+					return disponible=false;
 				}else {
 					disponible = true;
 				}
