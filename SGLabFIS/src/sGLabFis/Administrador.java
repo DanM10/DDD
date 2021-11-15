@@ -71,11 +71,11 @@ public class Administrador {
 		return listaSolic;
 	}
 
-	public boolean estaDisponible(String codigoMaquina) {
+	public boolean estaDisponible(String codigoMaquina) { //Verifica que un computador este disponible
 		boolean disponible= false;
 		for (Laboratorio auxlab : listLabs) {
 			for (Computadora auxComputador : auxlab.getListComputadoras()) {
-				if(auxComputador.getCodigo().equals(codigoMaquina)) {
+				if(auxComputador.getCodigo().equals(codigoMaquina) && auxComputador.isEstaOcupada()==true) {
 					disponible=false;
 					break;
 				}else {

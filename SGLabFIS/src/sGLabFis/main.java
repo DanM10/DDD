@@ -74,42 +74,44 @@ public class main {
 		//Menu Principal
 		switch (option){
 			case 1: //Asignar computador
-				System.out.println("Ingrese la RAM del computador: 1. 4, 2. 8, 3. 12, 4. 16");
+				//Ingresar RAM del computador
+				System.out.println("Ingrese la RAM del computador: 1. 4GB, 2. 8GB, 3. 12GB, 4. 16GB");
 				int option2 = keyboard2.nextInt();
-				if(option2 == 1) {
+				if(option2 == 1) { //RAM de 4GB
 					dg.verificarDisponibilidad(4);
-				}else if(option2 == 2) {
+				}else if(option2 == 2) {//RAM de 8GB
 					dg.verificarDisponibilidad(8);
-				}else if(option2 == 3) {
+				}else if(option2 == 3) { //RAM de 12GB
 					dg.verificarDisponibilidad(12);
-				}else if(option2 == 4) {
+				}else if(option2 == 4) { //RAM de 16GB
 					dg.verificarDisponibilidad(16);
-				}else {
+				}else { //Mensaje de error
 					System.out.println("Seleccione una opcion valida");
 					menu(dg);
 				}
 
+				//Escoger Solicitud
 				System.out.println("Ingrese el codigo de la solicitud: so1, so2 o so3");
 				String code = keyboard3.nextLine();
 				System.out.println("Elija el computador a asignar\n" +
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el numero de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
-				if(dg.estaDisponible(computadorAsignado)== false) {
-					if(code.equals("so1")) {
+				if(dg.estaDisponible(computadorAsignado)== false) { //Busca que el computador no este ocupado
+					if(code.equals("so1")) { //Solicitud 1
 						dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
 						dg.verificarDisponibilidad(4);
-					}else if(code.equals("so2")){
+					}else if(code.equals("so2")){ //Solicitud 2
 						dg.asignarComputador(dg.getListaSolic().get(1), computadorAsignado);
 						dg.verificarDisponibilidad(4);
-					}else if(code.equals("so3")){
+					}else if(code.equals("so3")){ //Solicitud 3
 						dg.asignarComputador(dg.getListaSolic().get(2), computadorAsignado);
 						dg.verificarDisponibilidad(4);
-					}else {
+					}else { //Mensaje si no se escogio una solicitud valida
 						System.out.println("Elija una opcion valida");
 						menu(dg);
 					}
-				}else {
+				}else { //
 					System.out.println("El computador esta asignado, operacion incompleta");
 				}
 				menu(dg);
@@ -126,7 +128,7 @@ public class main {
 				dg.verificarDisponibilidad(4);
 				menu(dg);
 				break;
-			default:
+			default: //Mensaje de error
 				System.out.println("Seleccione una opcion valida");
 				menu(dg);
 				break;
