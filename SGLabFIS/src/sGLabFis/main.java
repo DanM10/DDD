@@ -37,22 +37,8 @@ public class main {
 			ListLab.get(0).getListComputadoras().add(new Computadora(aux1,16,aux));
 			ListLab.get(1).getListComputadoras().add(new Computadora(aux2,20,aux));
 		}
-
+			ListLab.get(0).getListComputadoras().get(6).setEstudiante(new Estudiante("00","Juan Pere","sda"));
 		List<Solicitud> ListSol = new ArrayList<Solicitud>();
-/*
-		Estudiante ej1 = new Estudiante("01","Daniel Garrido","dani@dfa");
-		Estudiante ej2 = new Estudiante("02","Daniela","dani2@dfa");
-		Estudiante ej3 = new Estudiante("03","Daniel C","dani3@dfa");
-
-		Solicitud so1 = new Solicitud(ej1,8,"SSCC");
-		Solicitud so2 = new Solicitud(ej2,20,"RED");
-		Solicitud so3 = new Solicitud(ej3,16,"RA");
-
-		ListSol.add(so1);
-		ListSol.add(so2);
-		ListSol.add(so3);
-*/
-
 		Administrador dg = new Administrador(ListLab,ListSol);
 		return dg;
 	}
