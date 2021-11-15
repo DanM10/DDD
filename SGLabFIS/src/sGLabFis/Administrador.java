@@ -71,14 +71,16 @@ public class Administrador {
 		return listaSolic;
 	}
 
+
 	public boolean estaDisponible(String codigoMaquina) {
 		boolean seEncontro=false;
 		for (Laboratorio auxlab : listLabs) {
 			for (Computadora auxComputador : auxlab.getListComputadoras()) {
 				if(auxComputador.getCodigo().equals(codigoMaquina)&&auxComputador.isEstaOcupada()==false) {
 					seEncontro=true;
-					System.out.println("se encontro");
+					
 					break;
+
 				}
 			}
 		}
