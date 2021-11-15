@@ -95,7 +95,7 @@ public class main {
 						"Recuerde que debe escribir el nombre del laboratorio seguido por el numero de computador\n" +
 						"Ejemplo: GAMMA_5");
 				String computadorAsignado = keyboard4.nextLine();
-				if(dg.estaDisponible(computadorAsignado)== false) {
+				if(dg.estaDisponible(computadorAsignado)== true) {
 					if(code.equals("so1")) {
 						dg.asignarComputador(dg.getListaSolic().get(0), computadorAsignado);
 						dg.verificarDisponibilidad(4);

@@ -72,18 +72,17 @@ public class Administrador {
 	}
 
 	public boolean estaDisponible(String codigoMaquina) {
-		boolean disponible= false;
+		boolean seEncontro=false;
 		for (Laboratorio auxlab : listLabs) {
 			for (Computadora auxComputador : auxlab.getListComputadoras()) {
-				if(auxComputador.getCodigo().equals(codigoMaquina)) {
-					if(!auxComputador.isEstaOcupada()) {
-				        disponible=true;
-				        break;
-					}
+				if(auxComputador.getCodigo().equals(codigoMaquina)&&auxComputador.isEstaOcupada()==false) {
+					seEncontro=true;
+					System.out.println("se encontro");
+					break;
 				}
 			}
 		}
-		return disponible;
+		return seEncontro;
 	}
 
 }
