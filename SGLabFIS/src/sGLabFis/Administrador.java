@@ -3,6 +3,7 @@ package sGLabFis;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Administrador {
 
 	private List<Laboratorio> listLabs;
@@ -51,7 +52,7 @@ public class Administrador {
 		List<Computadora> disponibles = new ArrayList<Computadora>();
 		for(Laboratorio labAux :listLabs) {
 			for(Computadora cpuAux: labAux.getListComputadoras()) {
-				if(cpuAux.getRAM() >= Ram) {
+				if(cpuAux.getRAM() >= Ram && java.util.Objects.isNull(cpuAux.getEstudiante())) {
 					disponibles.add(cpuAux);
 				}
 			}
@@ -67,6 +68,27 @@ public class Administrador {
 		return disponibles;
 	}
 
+	public List<Computadora> imprimirLabs(int Ram) {
+		List<Computadora> disponibles = new ArrayList<Computadora>();
+		for(Laboratorio labAux :listLabs) {
+			for(Computadora cpuAux: labAux.getListComputadoras()) {
+				if(cpuAux.getRAM() >= Ram) {
+					disponibles.add(cpuAux);
+				}
+			}
+		}
+		
+		if(disponibles.isEmpty()) {
+			System.out.println("No existen maquinas disponibles");			
+		}else {
+			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
+			System.out.println("C�digo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a "+"Estudiante");
+			System.out.println(disponibles);
+		}
+		return disponibles;
+	}
+	
+	
 	public List<Solicitud> getListaSolic() {
 		return listaSolic;
 	}

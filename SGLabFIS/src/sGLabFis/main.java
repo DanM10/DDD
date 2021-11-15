@@ -103,7 +103,7 @@ public class main {
 						//asignar
 						System.out.println("Estas son las credenciales: ");
 						dg.asignarComputador(auxS, computadorAsignado);
-						dg.verificarDisponibilidad(option2);
+						dg.imprimirLabs(option2);
 						System.out.println();
 						encontrado=true;
 						break;
@@ -126,7 +126,7 @@ public class main {
 				menu(dg);
 				break;
 			case 3: // Mostrar computadores
-				dg.verificarDisponibilidad(4);
+				dg.imprimirLabs(4);
 				menu(dg);
 				break;
 			case 4: //Salir del sistema
