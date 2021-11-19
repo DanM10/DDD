@@ -20,6 +20,8 @@ public class Computadora {
 	this.estudiante = null;
 	}
 
+	public Computadora() {
+	}
 
 	public int getRAM() {
 		return RAM;

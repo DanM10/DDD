@@ -6,20 +6,29 @@ import java.util.List;
 public class Laboratorio {
 	
 	private String nombre;
-	private List <Computadora> lab;
+	private List <Computadora> listaComputadoras;
 	
 	
 	public Laboratorio(String nombre) {
 		this.nombre = nombre;
-		lab = new ArrayList<Computadora>();
+		listaComputadoras = new ArrayList<Computadora>();
+	}
+	public Computadora buscarComputador(String codigoMaquina){
+		Computadora computadora = null;
+		for (Computadora aux:listaComputadoras) {
+			if(aux.getCodigo().equals(codigoMaquina)){
+				computadora = aux;
+			}
+		}
+		return computadora;
 	}
 
 	private  void addComputador(Computadora computadora) {
-		lab.add(computadora);
+		listaComputadoras.add(computadora);
 	}
 
 	public List<Computadora> getListComputadoras() {
-		return lab;
+		return listaComputadoras;
 	}
 
 	public String getNombre() {
@@ -32,7 +41,7 @@ public class Laboratorio {
 
 	@Override
 	public String toString() {
-		return "Laboratorio [nombre=" + nombre + ", lab=" + lab.toString() + "]";
+		return "Laboratorio [nombre=" + nombre + ", lab=" + listaComputadoras.toString() + "]";
 	}
 	
 	
