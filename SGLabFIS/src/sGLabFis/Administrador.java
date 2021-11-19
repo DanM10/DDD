@@ -53,7 +53,7 @@ public class Administrador {
 			}
 		}
 		if(!seEncontro) {
-			System.out.println("C�digo de Computador Incorrecto");
+			System.out.println("Codigo de Computador Incorrecto");
 		}
 	}
 	
@@ -66,7 +66,9 @@ public class Administrador {
 	public List<Computadora> getComputadorasDisponibles(int Ram, List<Computadora> disponibles) {
 		for(Laboratorio labAux :listLabs) {
 			for(Computadora cpuAux: labAux.getListComputadoras()) {
-				if(cpuAux.getRAM() >= Ram && cpuAux.isEstaOcupada() == false) {
+				final boolean ramComputador = cpuAux.getRAM() >= Ram;
+				final boolean computadorNoOcupado = !cpuAux.isEstaOcupada();
+				if(ramComputador && computadorNoOcupado) {
 					disponibles.add(cpuAux);
 				}
 			}
@@ -95,7 +97,8 @@ public class Administrador {
 		List<Computadora> disponibles = new ArrayList<Computadora>();
 		for(Laboratorio labAux :listLabs) {
 			for(Computadora cpuAux: labAux.getListComputadoras()) {
-				if(cpuAux.getRAM() >= Ram) {
+				final boolean ramComputador = cpuAux.getRAM() >= Ram;
+				if(ramComputador) {
 					disponibles.add(cpuAux);
 				}
 			}
@@ -105,7 +108,7 @@ public class Administrador {
 			System.out.println("No existen maquinas disponibles");			
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
-			System.out.println("C�digo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a "+"Estudiante");
+			System.out.println("Codigo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrasena "+"Estudiante");
 			System.out.println(disponibles);
 		}
 		return disponibles;

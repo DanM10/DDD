@@ -11,13 +11,13 @@ public class Computadora {
 	
 	
 	public Computadora(String Codigo, int Ram, Credencial credencial) {
-	this.Codigo = Codigo;
-	this.RAM = Ram;
-	String[] aux = Codigo.split("_");
-	this.laboratorio = aux[0];
-	this.numero = aux[1];
-	this.credencial = credencial;
-	this.estudiante = null;
+		this.Codigo = Codigo;
+		this.RAM = Ram;
+		String[] aux = Codigo.split("_");
+		this.laboratorio = aux[0];
+		this.numero = aux[1];
+		this.credencial = credencial;
+		this.estudiante = null;
 	}
 
 	public Computadora() {
