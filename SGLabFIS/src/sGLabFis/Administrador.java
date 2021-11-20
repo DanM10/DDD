@@ -45,7 +45,8 @@ public class Administrador {
 	public void quitarComputador(String codigoMaquina) {
 		boolean seEncontro=false;
 		for (Laboratorio auxlab : listLabs) {
-			if(auxlab.buscarComputador(codigoMaquina)!=null){
+			final boolean computadorBuscado = auxlab.buscarComputador(codigoMaquina) != null;
+			if(computadorBuscado){
 				Computadora auxComputador = auxlab.buscarComputador(codigoMaquina);
 				auxComputador.setEstaOcupada(false);
 				seEncontro=true;
@@ -78,7 +79,7 @@ public class Administrador {
 			System.out.println("No existen maquinas disponibles");
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
-			System.out.println("C�digo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a "+"Estudiante");
+			System.out.println("Codigo\tRAM\tEstaOcupada\tUsuario\tAnydeskId\tContrase�a "+"Estudiante");
 			System.out.println(disponibles);
 		}
 		return disponibles;
