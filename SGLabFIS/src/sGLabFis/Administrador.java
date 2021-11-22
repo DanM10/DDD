@@ -21,17 +21,14 @@ public class Administrador {
 		int numLab = Integer.parseInt(num);
 		for(Laboratorio auxLab : listLabs) {
 			if(auxLab.buscarComputador(codigoMaquina)!=null){
-				auxLab.getListComputadoras().get(numLab).setEstaOcupada(true);
-				auxLab.getListComputadoras().get(numLab).setEstudiante(solicitud.getEstudiante());
-				System.out.println(auxLab.getListComputadoras().get(numLab).getCredenciales());
-				break;
+				final Computadora computadorAsignado = 	auxLab.getListComputadoras().get(numLab);
+				computadorAsignado.setEstaOcupada(true);
+				computadorAsignado.setEstudiante(solicitud.getEstudiante());
 
+				break;
 			}
 		}
-		Laboratorio auxLab = buscarLab(lab);
-		auxLab.getListComputadoras().get(numLab).setEstaOcupada(true);
-		auxLab.getListComputadoras().get(numLab).setEstudiante(solicitud.getEstudiante());
-		System.out.println(auxLab.getListComputadoras().get(numLab).getCredenciales());
+
 	}
 	public Laboratorio buscarLab(String nombre){
 		for (Laboratorio auxLab:listLabs) {
@@ -84,10 +81,14 @@ public class Administrador {
 		}
 		return disponibles;
 	}
-	public Computadora buscarComputador(String codigoMaquina, Laboratorio auxLab){
-		for (Computadora auxComputador:auxLab.getListComputadoras()) {
-			if(auxComputador.getCodigo().equals(codigoMaquina)){
-				return  auxComputador;
+
+
+	public Computadora buscarComputador(String codigoMaquina){
+		for(Laboratorio Lab :this.listLabs) {
+			for (Computadora auxComputador : Lab.getListComputadoras()) {
+				if (auxComputador.getCodigo().equals(codigoMaquina)) {
+					return auxComputador;
+				}
 			}
 		}
 		return null;
@@ -123,12 +124,16 @@ public class Administrador {
 
 	public boolean estaDisponible(String codigoMaquina) {
 		for (Laboratorio auxlab : listLabs) {
-			if (auxlab.buscarComputador(codigoMaquina)!=null&&auxlab.buscarComputador(codigoMaquina).isEstaOcupada()==false){
+			final boolean isAComputador = auxlab.buscarComputador(codigoMaquina)!=null;
+			final boolean isOcupada = auxlab.buscarComputador(codigoMaquina).isEstaOcupada()==true;
+			if (isAComputador && !isOcupada){
 				return true;
 			}
 		}
 		return false;
 	}
 
-
+	public List<Laboratorio> getListLabs() {
+		return listLabs;
+	}
 }

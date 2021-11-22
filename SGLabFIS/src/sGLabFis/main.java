@@ -15,6 +15,7 @@ public class main {
 		System.out.println("Bienvenido al Sistema de gestion de entrega de computadores del laboratorio de la FIS\n");
 		Administrador dg = generarAdmin();
 		menu(dg);
+
 	}
 	
 	private static Administrador generarAdmin() {
@@ -105,7 +106,10 @@ public class main {
 						//asignar
 						System.out.println("Estas son las credenciales: ");
 						dg.asignarComputador(auxS, computadorAsignado);
-						dg.imprimirLabs(option2);
+						Computadora asignadoC=null;
+						asignadoC = dg.buscarComputador(computadorAsignado);
+						System.out.println(asignadoC.getCredenciales());
+						//dg.imprimirLabs(option2);
 						System.out.println();
 						encontrado=true;
 						break;
