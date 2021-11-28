@@ -13,15 +13,22 @@ public class Computadora {
 	public Computadora(String Codigo, int Ram, Credencial credencial) {
 		this.Codigo = Codigo;
 		this.RAM = Ram;
-		String[] aux = Codigo.split("_");
-		this.laboratorio = aux[0];
-		this.numero = aux[1];
+		separarCodigo(Codigo);
 		this.credencial = credencial;
 		this.estudiante = null;
 	}
 
-	public Computadora() {
+
+	//refactor pilas
+	private String[] separarCodigo(String Codigo) {
+		String[] aux = Codigo.split("_");
+		this.laboratorio = aux[0];
+		this.numero = aux[1];
+		return aux;
 	}
+
+
+
 
 	public int getRAM() {
 		return RAM;

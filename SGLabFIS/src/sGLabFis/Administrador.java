@@ -30,14 +30,7 @@ public class Administrador {
 		}
 
 	}
-	public Laboratorio buscarLab(String nombre){
-		for (Laboratorio auxLab:listLabs) {
-			if(auxLab.getNombre().equals(nombre)){
-				return auxLab;
-			}
-		}
-		return null;
-	}
+
 	
 	public void quitarComputador(String codigoMaquina) {
 		boolean seEncontro=false;
