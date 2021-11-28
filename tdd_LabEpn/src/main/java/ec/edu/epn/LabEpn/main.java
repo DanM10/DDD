@@ -108,7 +108,7 @@ public class main {
 						dg.asignarComputador(auxS, computadorAsignado);
 						Computadora asignadoC=null;
 						asignadoC = dg.buscarComputador(computadorAsignado);
-						System.out.println(asignadoC.getCredenciales());
+						System.out.println(asignadoC.getCredencialesString());
 						//dg.imprimirLabs(option2);
 						System.out.println();
 						encontrado=true;

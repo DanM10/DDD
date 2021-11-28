@@ -10,7 +10,8 @@ public class GestorLab {
         Laboratorio auxLab= admin.buscarLab(nombreLab);
         //Si esque no existe un laboratorio con ese nombre, entonces devuelve null
         boolean esCodigoValido = nombreLab.equals(pc.getLaboratorio());
-        if(auxLab!=null && esCodigoValido){
+        boolean esCredencial = pc.getCredencial().isEstadoCredencial();
+        if(auxLab!=null && esCodigoValido &&esCredencial){
             auxLab.addComputador(pc);
             return  pc;
         }else{

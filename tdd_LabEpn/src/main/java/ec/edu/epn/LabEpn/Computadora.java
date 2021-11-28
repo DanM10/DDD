@@ -64,10 +64,13 @@ public class Computadora {
 		return numero;
 	}
 
-	public String getCredenciales() {
+	public String getCredencialesString() {
 		return this.credencial.toString();
 	}
 
+	public Credencial getCredencial() {
+		return credencial;
+	}
 
 	public Estudiante getEstudiante() {
 		return estudiante;

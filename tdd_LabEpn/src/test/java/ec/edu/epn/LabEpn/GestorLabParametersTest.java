@@ -11,7 +11,7 @@ import org.junit.runners.Parameterized;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -75,7 +75,7 @@ public class GestorLabParametersTest extends TestCase {
         return objects;
     }
 
-    //se comprueba que no ecista problema al añadir una computadora
+    //se comprueba que no exista problema al añadir una computadora
     @Test
     public void given_parameters_when_addPC_then_add(){
         g = new GestorLab();
