@@ -77,27 +77,21 @@ public class GestorLabParametersTest extends TestCase {
 
     //se comprueba que no exista problema al añadir una computadora
     @Test
-    public void given_parameters_when_addPC_then_add(){
+    public void given_parameters_when_addPC_then_NotNull(){
         g = new GestorLab();
         Computadora pc =  new Computadora(Codigo,RAM,credencial);
         assertNotNull(g.addPc(Lab,pc,admin));
     }
 
-    //se comprueba que todas las maquinas no esten ocupadas
-    @Test
-    public void given_when_addPC_then_OK(){
-        g=new GestorLab();
-        Computadora pc =  new Computadora(Codigo,RAM,credencial);
-        assertEquals(false,pc.isEstaOcupada());
-    }
 
 
     //se comprueba que la Ram coincida con la maquina que se anadio
     @Test
-    public void given_when2_addPC_then_OK(){
+    public void given_parameters_when_addPC_then_RAM_and_codigo_OK(){
         g=new GestorLab();
         Computadora pc =  new Computadora(Codigo,RAM,credencial);
         g.addPc(Lab,pc,admin);
+
         Laboratorio aux = admin.buscarLab(Lab);
         int size_lab = aux.getListComputadoras().size()-1;
         String coigoActual =  aux.getListComputadoras().get(size_lab).getCodigo();

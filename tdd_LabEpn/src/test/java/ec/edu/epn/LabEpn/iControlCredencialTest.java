@@ -15,7 +15,7 @@ public class iControlCredencialTest {
     private GestorLab g;
     private static Credencial credencial;
     private static Administrador admin;
-
+    private static Computadora pc;
 
 
     @BeforeClass
@@ -39,23 +39,23 @@ public class iControlCredencialTest {
     }
 
     @Test
-    public void give_credencial_when_is_correct_then_true() {
+    public void given_credencial_when_addPC_then_verificar_credecial_true() {
         iControlCredencial control = Mockito.mock(iControlCredencial.class);
         credencial = new Credencial("120","3","3e");
         Mockito.when(control.verificarCredencial(Mockito.any())).thenReturn(true);
         g = new GestorLab();
-        Computadora pc =  new Computadora("GAMMA_X",0,credencial);
+        pc =  new Computadora("GAMMA_X",0,credencial);
         pc.getCredencial().setEstadoCredencial(control.verificarCredencial(credencial));
         assertNotNull(g.addPc("GAMMA",pc,admin));
     }
 
     @Test
-    public void give_credencial_when_is_correct_then_False() {
+    public void given_credencial_when_addPC_then_verificar_credecial_false() {
         iControlCredencial control = Mockito.mock(iControlCredencial.class);
         credencial = new Credencial("120","3","3e");
         Mockito.when(control.verificarCredencial(Mockito.any())).thenReturn(false);
         g = new GestorLab();
-        Computadora pc =  new Computadora("GAMMA_X",0,credencial);
+        pc =  new Computadora("GAMMA_X",0,credencial);
         pc.getCredencial().setEstadoCredencial(control.verificarCredencial(credencial));
         assertNull(g.addPc("GAMMA",pc,admin));
     }
