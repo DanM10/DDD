@@ -9,7 +9,8 @@ public class GestorLab {
     public Computadora addPc(String nombreLab, Computadora pc, Administrador admin){
         Laboratorio auxLab= admin.buscarLab(nombreLab);
         //Si esque no existe un laboratorio con ese nombre, entonces devuelve null
-        if(auxLab!=null){
+        boolean esCodigoValido = nombreLab.equals(pc.getLaboratorio());
+        if(auxLab!=null && esCodigoValido){
             auxLab.addComputador(pc);
             return  pc;
         }else{
