@@ -41,16 +41,40 @@ public class GestorLabTest {
     }
 
     @Test
-    public void given_pcName_when_addComputador_then_ok(){
+    public void given_pcName_when_addPc_then_ok(){
         g = new GestorLab();
-        Computadora pc =  new Computadora("GAMMA_101",8,new Credencial( "123","123","123"));
+        Computadora pc =  new Computadora("GAMMA_06",8,new Credencial( "123","123","123"));
         assertNotNull(g.addPc("GAMMA", pc, dg));
 
+    }
+    @Test (expected = ArrayIndexOutOfBoundsException.class)
+    public void given_wrong_codigoMaquina_when_addPc_then_exept(){
+        g = new GestorLab();
+        Computadora pc =  new Computadora("GAMM",8,new Credencial( "123","123","123"));
+        assertNotNull(g.addPc("GAMMA", pc, dg));
+
+    }
+    @Test
+    public void given_a_correct_lab_name_when_addPc_then_ok(){
+        g = new GestorLab();
+        Computadora pc =  new Computadora("GAMMA_O6",8,new Credencial( "123","123","123"));
+        assertNotNull(g.addPc("GAMMA", pc, dg));
+    }
+    @Test
+    public void given_an_incorrect_lab_name_when_addPc_then_null(){
+        g = new GestorLab();
+        Computadora pc =  new Computadora("GAMMA_101",8,new Credencial( "123","123","123"));
+        assertNull(g.addPc("FAKENAME", pc, dg));
     }
     @Test
     public void given_a_non_existing_lab_name_when_addLaboratorio_then_OK(){
         g= new GestorLab();
         assertNotNull(g.addLaboratorio("ALFA",dg));
+    }
+    @Test
+    public void given_an_existing_lab_name_when_addLaboratorio_then_NULL(){
+        g= new GestorLab();
+        assertNull(g.addLaboratorio("GAMMA",dg));
     }
     @Test
     public void given_a_studentName_asigned_to_a_Pc_when_BuscarComputadoraPorEstudiante_then_Ok(){
