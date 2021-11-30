@@ -20,7 +20,8 @@ public class Administrador {
 		String num = aux[1];
 		int numLab = Integer.parseInt(num);
 		for(Laboratorio auxLab : listLabs) {
-			if(auxLab.buscarComputador(codigoMaquina)!=null){
+			final boolean computadorEncontrado = auxLab.buscarComputador(codigoMaquina)!=null;
+			if(computadorEncontrado){
 				final Computadora computadorAsignado = 	auxLab.getListComputadoras().get(numLab);
 				computadorAsignado.setEstaOcupada(true);
 				computadorAsignado.setEstudiante(solicitud.getEstudiante());
@@ -64,8 +65,8 @@ public class Administrador {
 				}
 			}
 		}
-
-		if(disponibles.isEmpty()) {
+		final boolean noExistenComputadoresDisponibles = disponibles.isEmpty();
+		if(noExistenComputadoresDisponibles) {
 			System.out.println("No existen maquinas disponibles");
 		}else {
 			System.out.println("Las siguientes maquinas estan disponibles: "+"\n");
@@ -79,7 +80,8 @@ public class Administrador {
 	public Computadora buscarComputador(String codigoMaquina){
 		for(Laboratorio Lab :this.listLabs) {
 			for (Computadora auxComputador : Lab.getListComputadoras()) {
-				if (auxComputador.getCodigo().equals(codigoMaquina)) {
+				final boolean computadorEncontrado = auxComputador.getCodigo().equals(codigoMaquina);
+				if (computadorEncontrado) {
 					return auxComputador;
 				}
 			}

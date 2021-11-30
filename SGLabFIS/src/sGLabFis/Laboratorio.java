@@ -16,7 +16,8 @@ public class Laboratorio {
 	public Computadora buscarComputador(String codigoMaquina){
 		Computadora computadora = null;
 		for (Computadora aux:listaComputadoras) {
-			if(aux.getCodigo().equals(codigoMaquina)){
+			final boolean coincidenCodigosMaquina = aux.getCodigo().equals(codigoMaquina);
+			if(coincidenCodigosMaquina){
 				computadora = aux;
 			}
 		}

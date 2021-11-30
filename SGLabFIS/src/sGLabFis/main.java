@@ -103,7 +103,7 @@ public class main {
 						String materia = keyboard.next();
 						Solicitud auxS = new Solicitud(auxE,option2,materia);
 						dg.getListaSolic().add(auxS);
-						//asignar
+						//Asignar
 						System.out.println("Estas son las credenciales: ");
 						dg.asignarComputador(auxS, computadorAsignado);
 						Computadora asignadoC=null;
